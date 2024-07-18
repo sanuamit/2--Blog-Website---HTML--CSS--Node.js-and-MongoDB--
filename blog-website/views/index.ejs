@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Website</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Blog Posts</h1>
+        <a href="/new" class="btn">Create New Post</a>
+        <% posts.forEach(post => { %>
+            <div class="post">
+                <div>
+                    <div class="post-title"><%= post.title %></div>
+                    <div class="post-content"><%= post.content %></div>
+                </div>
+                <div class="btn-group">
+                    <a href="/edit/<%= post._id %>" class="btn">Edit</a>
+                    <form action="/posts/<%= post._id %>?_method=DELETE" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-delete">Delete</button>
+                    </form>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>
